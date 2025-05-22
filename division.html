@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pastelería Divisoria</title>
+    <link rel="stylesheet" href="division.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <audio id="musica-fondo" src="audio/audio2.mp3" autoplay loop></audio>
+
+    <!-- Banner -->
+    <div class="banner">
+        <img src="imagess/tecnm.png" alt="Logo Izquierdo">
+        Aprende en línea con la escuelita de Male ¡Aprender es una aventura en la escuelita de Male!
+        <img src="imagess/itp.png" alt="Logo Derecho">
+    </div>
+
+    <div class="juego-contenedor">
+        <p id="problema" class="problema"></p>
+
+        <div class="pastel-ajolote-contenedor">
+            <img src="imagess/ajo.png" alt="Ajolote pequeño" class="ajolote-pequeno">
+            <div class="pastel-container">
+                <div class="pastel" id="pastel"></div>
+            </div>
+        </div>
+
+        <input type="number" id="respuesta" placeholder="Tu respuesta" />
+        <button onclick="verificarRespuesta()">Comprobar</button>
+        <div class="feedback" id="feedback"></div>
+
+        
+    </div>
+    <button class="volver-btn" onclick="cerrarJuego()">Volver</button>
+
+    <footer>
+        Tecnológico Nacional de México - Campus Pachuca - Proyecto de asignatura - Programación Web - 2025
+    </footer>
+
+    <script>
+        let totalRebanadas;
+        let totalPersonas;
+        let respuestaCorrecta;
+
+        function generarProblema() {
+            const pastel = document.getElementById("pastel");
+            pastel.innerHTML = "";
+
+            totalRebanadas = Math.floor(Math.random() * 8) + 4;
+            totalPersonas = Math.floor(Math.random() * (totalRebanadas - 1)) + 1;
+            respuestaCorrecta = totalRebanadas / totalPersonas;
+
+            document.getElementById("problema").textContent =
+                `Si hay ${totalRebanadas} rebanadas y se reparten entre ${totalPersonas} personas, ¿cuántas rebanadas le tocan a cada uno?`;
+
+            document.getElementById("respuesta").value = "";
+            document.getElementById("feedback").textContent = "";
+            pastel.innerHTML = "";
+        }
+
+        function verificarRespuesta() {
+            const input = document.getElementById("respuesta");
+            const feedback = document.getElementById("feedback");
+            const valorUsuario = parseFloat(input.value);
+            const pastel = document.getElementById("pastel");
+            pastel.innerHTML = "";
+
+            if (isNaN(valorUsuario) || valorUsuario <= 0) {
+                feedback.textContent = "Por favor escribe un número válido.";
+                feedback.className = "feedback incorrecto";
+                return;
+            }
+
+            for (let i = 0; i < valorUsuario; i++) {
+                const porcion = document.createElement("div");
+                porcion.classList.add("porcion");
+                porcion.style.transform = `rotate(${(360 / valorUsuario) * i}deg)`;
+                pastel.appendChild(porcion);
+            }
+
+            if (Math.abs(valorUsuario - respuestaCorrecta) < 0.01) {
+                feedback.textContent = "¡Correcto! 🎉";
+                feedback.className = "feedback correcto";
+                setTimeout(generarProblema, 2000);
+            } else {
+                feedback.textContent = "Ups, intenta otra vez 😅";
+                feedback.className = "feedback incorrecto";
+            }
+        }
+
+        function cerrarJuego() {
+            const seccionAnterior = sessionStorage.getItem('seccionAnterior') || 'contenido-juega';
+            window.location.href = `primaria.html#${seccionAnterior}`;
+        }
+        
+
+        window.onload = generarProblema;
+    </script>
+</body>
+
+</html>

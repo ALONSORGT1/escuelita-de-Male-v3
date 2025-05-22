@@ -1,0 +1,1162 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-align: center;
+    background-color: #fefefe;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+footer {
+    background-color: rgb(87, 84, 84);
+    color: white;
+    text-align: right; /* Alinea el texto a la izquierda */
+    padding: 10px 20px;
+    width: auto; /* Ajusta el ancho al tamaño del contenido */
+    position: fixed; /* Mantiene el footer fijo en la parte inferior */
+    bottom: 0;
+    right: 0; /* Alinea el footer en la esquina izquierda */
+}
+
+.banner {
+    background-color: #5ac25a;
+    color: white;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.banner img {
+    height: 50px;
+    margin: 0 15px;
+}
+
+.contenido {
+    flex: 1;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Pizarrón solo en la página principal */
+#contenido-principal .titulo-container {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 600px; /* Ancho del contenedor de los títulos */
+    max-width: 90%; /* Ajuste para pantallas pequeñas */
+    background-image: url('imagess/pizarron.jpg'); /* Imagen de fondo */
+    background-size: contain; /* Asegura que toda la imagen se vea sin recortar */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    padding: 40px 20px; /* Espacio para los títulos */
+    border-radius: 10px; /* Bordes redondeados */
+    height: 400px; /* Altura fija para el contenedor */
+}
+
+/* Títulos (solo en la página principal) */
+#contenido-principal .titulo,
+#contenido-principal .subtitulo {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0, 123, 255, 0.7); /* Fondo azul con opacidad */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    width: fit-content; /* Ajusta el ancho al contenido */
+    position: absolute; /* Posicionamiento absoluto */
+    left: 50%; /* Centrado horizontal */
+    transform: translateX(-50%); /* Ajuste fino para centrar */
+}
+
+#contenido-principal .titulo {
+    top: 30%; /* Posición vertical del primer título */
+    background-color: #007bff; /* Fondo azul */
+}
+
+#contenido-principal .subtitulo {
+    top: 50%; /* Posición vertical del segundo título */
+    background-color: #0056b3; /* Fondo azul más oscuro */
+}
+
+.desafio {
+    color: orange;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.botones {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 80px; /* Añade un margen inferior para evitar que choque con el footer */
+}
+
+.boton {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.boton:hover {
+    background-color: #0056b3;
+}
+
+.contenido img {
+    width: 250px; /* Tamaño más grande de las imágenes laterales */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.izquierda {
+    left: 150px; /* Más cerca del centro */
+}
+
+.derecha {
+    right: 150px; /* Más cerca del centro */
+}
+
+footer {
+    background-color: rgb(87, 84, 84);
+    color: white;
+    text-align: right; /* Alinea el texto a la izquierda */
+    padding: 10px 20px;
+    width: auto; /* Ajusta el ancho al tamaño del contenido */
+    position: fixed; /* Mantiene el footer fijo en la parte inferior */
+    bottom: 0;
+    right: 0; /* Alinea el footer en la esquina izquierda */
+}
+
+/* Estilos para el contenido de "Acerca de" */
+#contenido-acerca .titulo-container {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#contenido-acerca .titulo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #007bff; /* Color azul para el título */
+    margin-bottom: 20px;
+}
+
+.contenido-acerca {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinea los elementos en la parte superior */
+    gap: 40px; /* Espacio entre las columnas */
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px; /* Espaciado interno */
+}
+
+.columna {
+    flex: 1;
+    text-align: left;
+    padding: 0 20px;
+}
+
+.columna h2 {
+    font-size: 24px;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.columna h3 {
+    font-size: 20px;
+    color: #0056b3;
+    margin-top: 20px;
+}
+
+.columna ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.columna p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.columna-imagen {
+    flex: 0 0 300px; /* Ancho fijo para la imagen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.columna-imagen img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px; /* Espacio superior para la imagen */
+}
+
+/* Estilos para el botón de flecha */
+.boton-flecha {
+    position: fixed; /* Fija el botón en la pantalla */
+    top: 600px; /* Distancia desde la parte superior */
+    left: 20px; /* Distancia desde la izquierda */
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    display: flex; /* Alinea el ícono y el texto */
+    align-items: center; /* Centra verticalmente */
+    gap: 10px; /* Espacio entre el ícono y el texto */
+    font-size: 16px; /* Tamaño del texto */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.boton-flecha:hover {
+    background-color: #0056b3; /* Cambia el color al pasar el mouse */
+}
+
+.boton-flecha:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para el contenido de "Bloque 1" */
+#contenido-bloque1 .titulo-container {
+    text-align: left; /* Alinear el texto a la izquierda */
+    background-color: #D97706; /* Naranja más intenso */
+    padding: 10px 20px; /* Reducir el padding */
+    border-radius: 20px;
+    margin-bottom: 10px; /* Reducir el margen inferior */
+    align-self: flex-start; /* Alinear el contenedor a la izquierda */
+    width: auto; /* Ajustar el ancho al contenido */
+}
+
+#contenido-bloque1 .titulo {
+    font-size: 28px; /* Reducir el tamaño de la fuente */
+    font-weight: bold;
+    color: white;
+    margin: 0;
+}
+
+/* Contenedor principal del bloque */
+.contenido-bloque1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px; /* Reducir el espacio entre elementos */
+    max-width: 2000px;
+    width: 100%;
+    margin: 200 auto;
+    padding: 50px; /* Reducir el padding */
+    background-color: #FCE7C8; /* Color de fondo similar */
+    border-radius: 15px;
+    position: relative;
+}
+
+/* Contenedor de botones */
+.botones-bloque1 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Reducir el espacio entre botones */
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Estilos base para los botones */
+.boton-bloque1 {
+    background-color: white;
+    color: black;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: 3px solid #D97706; /* Bordes naranjas */
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center; /* Centrar el texto */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centrar el contenido */
+    gap: 10px;
+    font-weight: bold;
+}
+
+.boton-bloque1:hover {
+    background-color: #D97706;
+    color: white;
+}
+
+/* Contenedor padre */
+.contenedor {
+    position: relative;
+    width: 200vw; /* Ajusta según sea necesario */
+    height: 200vh; /* Ajusta según sea necesario */
+    overflow: visible; /* Asegura que no se recorte el contenido */
+}
+
+/* Imagen inferior izquierda */
+.inferior-izquierda {
+    position: absolute;
+    top: 60%; /* Ajusta la posición vertical */
+    left: 50px; /* Más a la izquierda */
+    transform: translateY(-50%);
+    width: 1000vw; /* Usa unidades relativas para hacerla responsive */
+    border-radius: 0px;
+    z-index: 10; /* Asegura que esté sobre otros elementos */
+}
+
+/* Imagen superior derecha */
+.superior-derecha {
+    position: absolute;
+    top: 20%; /* Ajusta la posición vertical */
+    right: 50px; /* Más a la derecha */
+    transform: translateY(-50%);
+    width: 100vw; /* Usa unidades relativas para hacerla responsive */
+    border-radius: 0px;
+    z-index: 10; /* Asegura que esté sobre otros elementos */
+}
+
+/* Contenedor principal de la sección "Descubre y Aprende con conceptos" */
+#contenido-conceptos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-color: #fff3e0; /* Naranja bajito */
+    padding: 0px;
+    position: relative; /* Para posicionar el botón "Volver" */
+}
+
+/* Estilos para el botón "Volver" (mismo estilo que en las otras secciones) */
+#volver-conceptos {
+    position: fixed; /* Fija el botón en la pantalla */
+    top: 600px; /* Distancia desde la parte superior */
+    left: 20px; /* Distancia desde la izquierda */
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    display: flex; /* Alinea el ícono y el texto */
+    align-items: center; /* Centra verticalmente */
+    gap: 10px; /* Espacio entre el ícono y el texto */
+    font-size: 16px; /* Tamaño del texto */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+#volver-conceptos:hover {
+    background-color: #0056b3; /* Azul más oscuro */
+}
+
+#volver-conceptos i {
+    margin-right: 8px; /* Espacio entre el ícono y el texto */
+}
+
+/* Contenedor del título */
+#contenido-conceptos .titulo-container {
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #ff9800; /* Naranja fuerte */
+    padding: 15px 30px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    display: inline-block; /* Ajusta el contenedor al tamaño del texto */
+}
+
+#contenido-conceptos .titulo {
+    font-size: 32px;
+    font-weight: bold;
+    color: white; /* Letras blancas */
+    margin: 0; /* Elimina el margen por defecto */
+}
+
+/* Contenedor de los botones en círculos (ahora en orden vertical) */
+#contenido-conceptos .botones-conceptosb1 {
+    display: flex;
+    flex-direction: column; /* Los botones se apilan verticalmente */
+    align-items: center; /* Centra los botones horizontalmente */
+    gap: 15px; /* Espacio entre los botones */
+}
+
+/* Estilos base para los botones ovalados */
+#contenido-conceptos .boton-sum,
+#contenido-conceptos .boton-mult,
+#contenido-conceptos .boton-div {
+    background-color: #ffeb3b; /* Amarillo */
+    width: 120px; /* Ancho más pequeño */
+    height: 80px; /* Altura más pequeña */
+    border-radius: 40px; /* Ovalado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    padding: 10px; /* Espaciado interno */
+}
+
+/* Efecto al pasar el mouse */
+#contenido-conceptos .boton-sum:hover,
+#contenido-conceptos .boton-mult:hover,
+#contenido-conceptos .boton-div:hover {
+    transform: scale(1.05); /* Agranda el botón */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+}
+
+/* Estilos específicos para cada botón (opcional) */
+#contenido-conceptos .boton-sum {
+    background-color: #ffdd55; /* Naranja claro */
+}
+
+#contenido-conceptos .boton-mult {
+    background-color: #ffdd55; /* Azul claro */
+}
+
+#contenido-conceptos .boton-div {
+    background-color: #ffdd55; /* Verde claro */
+}
+
+/* Contenedor de imágenes */
+#contenido-conceptos .imagenes-bloque1 img:nth-child(1) {
+    width: 300px; /* Ancho específico para la primera imagen */
+    top: 310px; /* Posición desde arriba */
+    left: 300px; /* Posición desde la izquierda */
+}
+
+#contenido-conceptos .imagenes-bloque1 img:nth-child(2) {
+    width: 200px; /* Ancho específico para la primera imagen */
+    top: 250px; /* Posición desde arriba */
+    left: 1100px; /* Posición desde la izquierda */
+}
+
+
+/* Contenedor principal de la sección "Juega y diviértete" */
+#contenido-juega {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-color: #fff3e0; /* Naranja bajito */
+    padding: 0px;
+    position: relative; /* Para posicionar el botón "Volver" */
+}
+
+/* Estilos para el botón "Volver" (mismo estilo que en las otras secciones) */
+#volver-juega {
+    position: fixed; /* Fija el botón en la pantalla */
+    top: 600px; /* Distancia desde la parte superior */
+    left: 20px; /* Distancia desde la izquierda */
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    display: flex; /* Alinea el ícono y el texto */
+    align-items: center; /* Centra verticalmente */
+    gap: 10px; /* Espacio entre el ícono y el texto */
+    font-size: 16px; /* Tamaño del texto */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+#volver-juega:hover {
+    background-color: #0056b3; /* Azul más oscuro */
+}
+
+#volver-juega i {
+    margin-right: 8px; /* Espacio entre el ícono y el texto */
+}
+
+/* Contenedor del título */
+#contenido-juega .titulo-container {
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #ff9800; /* Naranja fuerte */
+    padding: 15px 30px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    display: inline-block; /* Ajusta el contenedor al tamaño del texto */
+}
+
+#contenido-juega .titulo {
+    font-size: 32px;
+    font-weight: bold;
+    color: white; /* Letras blancas */
+    margin: 0; /* Elimina el margen por defecto */
+}
+
+/* Contenedor de los botones */
+#contenido-juega .botones-juega {
+    display: flex;
+    flex-direction: column; /* Los botones se apilan verticalmente */
+    align-items: center; /* Centra los botones horizontalmente */
+    gap: 25px; /* Espacio entre los botones */
+}
+
+/* Estilos base para los botones */
+#contenido-juega .boton-juega {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background-color: #ffeb3b; /* Amarillo */
+    width: 500px; /* Ancho más grande para acomodar el texto */
+    height: 80px; /* Altura más pequeña */
+    border-radius: 40px; /* Ovalado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    padding: 30px 30px; /* Espaciado interno */
+}
+
+/* Efecto al pasar el mouse */
+#contenido-juega .boton-juega:hover {
+    transform: scale(1.05); /* Agranda el botón */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+}
+
+/* Estilos específicos para cada botón (opcional) */
+#contenido-juega .boton-sumayresta {
+    background-color: #ffdd55; /* Naranja claro */
+}
+
+#contenido-juega .boton-multiplica {
+    background-color: #ffdd55; /* Azul claro */
+}
+
+#contenido-juega .boton-divide {
+    background-color: #ffdd55; /* Verde claro */
+}
+
+/* imágenes */
+#contenido-juega .imagenes-juega img:nth-child(1) {
+    width: 300px; /* Ancho específico para la primera imagen */
+    top: 310px; /* Posición desde arriba */
+    left: 180px; /* Posición desde la izquierda */
+}
+
+#contenido-juega .imagenes-juega img:nth-child(2) {
+    width: 300px; /* Ancho específico para la primera imagen */
+    top: 310px; /* Posición desde arriba */
+    left: 1000px; /* Posición desde la izquierda */
+}
+
+/*video */
+#contenido-mira .titulo-container {
+    background-color: #ff9800; /* Naranja fuerte */
+    padding: 10px 10px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    display: inline-block; /* Ajusta el contenedor al tamaño del texto */
+    margin-bottom: 10px; /* Margen inferior */
+    text-align: center; /* Centra el texto */
+}
+
+/* Estilos para el título */
+#contenido-mira .titulo {
+    font-size: 32px; /* Tamaño del texto */
+    font-weight: bold; /* Texto en negrita */
+    color: white; /* Texto blanco */
+    margin: 0; /* Elimina el margen por defecto */
+}
+
+#contenido-mira .video-container {
+    width: 80%; /* Ancho del contenedor del video (ajusta según necesites) */
+    max-width: 800px; /* Ancho máximo del contenedor */
+    margin: 15px auto; /* Centra el contenedor horizontalmente */
+}
+
+/* Estilos para el video */
+#contenido-mira .video-container video {
+    width: 100%; /* Ocupa el 100% del contenedor */
+    height: auto; /* Altura automática para mantener la proporción */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+
+/* Contenedor principal de la sección "Acepta el reto" */
+#contenido-reto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-color: #fff3e0; /* Naranja bajito */
+    padding: 0px;
+    position: relative; /* Para posicionar el botón "Volver" */
+}
+
+/* Estilos para el botón "Volver" (mismo estilo que en las otras secciones) */
+#volver-reto {
+    position: fixed; /* Fija el botón en la pantalla */
+    top: 600px; /* Distancia desde la parte superior */
+    left: 20px; /* Distancia desde la izquierda */
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    display: flex; /* Alinea el ícono y el texto */
+    align-items: center; /* Centra verticalmente */
+    gap: 10px; /* Espacio entre el ícono y el texto */
+    font-size: 16px; /* Tamaño del texto */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+#volver-reto:hover {
+    background-color: #0056b3; /* Azul más oscuro */
+}
+
+#volver-reto i {
+    margin-right: 8px; /* Espacio entre el ícono y el texto */
+}
+
+/* Contenedor del título */
+#contenido-reto .titulo-container {
+    background-color: #ff9800; /* Naranja fuerte */
+    padding: 15px 30px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    display: inline-block; /* Ajusta el contenedor al tamaño del texto */
+    margin-bottom: 30px; /* Margen inferior */
+    text-align: center; /* Centra el texto */
+}
+
+#contenido-reto .titulo {
+    font-size: 32px; /* Tamaño del texto */
+    font-weight: bold; /* Texto en negrita */
+    color: white; /* Texto blanco */
+    margin: 0; /* Elimina el margen por defecto */
+}
+
+/* Recuadro de texto */
+#contenido-reto .recuadro-texto {
+    background-color: white; /* Fondo blanco */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    max-width: 600px; /* Ancho máximo */
+    width: 90%; /* Ancho relativo */
+    margin-bottom: 30px; /* Margen inferior */
+    text-align: center; /* Centra el texto */
+    margin-top: 50px; /* Mueve hacia abajo */
+    margin-left: 70px; /* Mueve hacia la derecha */   
+}
+
+#contenido-reto .recuadro-texto p {
+    font-size: 18px; /* Tamaño del texto */
+    color: #333; /* Color del texto */
+    margin: 0; /* Elimina el margen por defecto */
+}
+
+/* Botón "Hagámoslo" */
+#contenido-reto .boton-hagamoslo {
+    position: absolute;
+    top: 500px; /* Espacio desde la parte superior */
+    right: 10px; /* Lo alinea a la derecha */
+    background-color: #ffb700; 
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#contenido-reto .boton-hagamoslo:hover {
+    background-color: #ff9c07;
+}
+
+#contenido-reto .imagenes-reto {
+    display: flex;
+    justify-content: space-between; /* Distribuye las imágenes */
+    gap: 50px; /* Espacio entre imágenes */
+}
+
+#contenido-reto .imagenes-reto img:nth-child(1) {
+    width: 400px; /* Tamaño personalizado para la primera imagen */
+    margin-left: 800px; /* Margen desde la izquierda */
+    margin-top: 0px; /* Margen desde arriba */
+}
+
+#contenido-reto .imagenes-reto img:nth-child(2) {
+    width: 200px;
+    align-self: flex-start; /* Asegura que se alinee arriba */
+    margin-left: 1200px;
+}
+
+/* Estilos para el contenido de "Bloque 2" */
+#contenido-bloque2 .titulo-container {
+    text-align: left; /* Alinear el texto a la izquierda */
+    background-color: #4CAF50; /* Verde claro */
+    padding: 10px 20px; /* Reducir el padding */
+    border-radius: 20px;
+    margin-bottom: 10px; /* Reducir el margen inferior */
+    align-self: flex-start; /* Alinear el contenedor a la izquierda */
+    width: auto; /* Ajustar el ancho al contenido */
+}
+
+#contenido-bloque2 .titulo {
+    font-size: 28px; /* Reducir el tamaño de la fuente */
+    font-weight: bold;
+    color: white;
+    margin: 0;
+}
+
+/* Contenedor principal del bloque */
+.contenido-bloque2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px; /* Reducir el espacio entre elementos */
+    max-width: 2000px;
+    width: 100%;
+    margin: 200 auto;
+    padding: 50px; /* Reducir el padding */
+    background-color: #E8F5E9; /* Verde claro más suave */
+    border-radius: 15px;
+    position: relative;
+}
+
+/* Contenedor de botones */
+.botones-bloque2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Reducir el espacio entre botones */
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Estilos base para los botones */
+.boton-bloque2 {
+    background-color: white;
+    color: black;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: 3px solid #4CAF50; /* Bordes verdes */
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center; /* Centrar el texto */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centrar el contenido */
+    gap: 10px;
+    font-weight: bold;
+}
+
+.boton-bloque2:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Contenedor de imágenes */
+#contenido-bloque2 .imagenes-bloque2 img:nth-child(1) {
+    width: 300px; /* Ancho específico para la primera imagen */
+    top: 310px; /* Posición desde arriba */
+    left: 100px; /* Posición desde la izquierda */
+}
+
+#contenido-bloque2 .imagenes-bloque2 img:nth-child(2) {
+    width: 200px; /* Ancho específico para la primera imagen */
+    top: 250px; /* Posición desde arriba */
+    left: 1100px; /* Posición desde la izquierda */
+}
+
+/* Contenedor principal de la sección "Descubre y Aprende con conceptos" para Bloque 2 */
+#contenido-conceptos-b2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-color: #E8F5E9; /* Verde claro */
+    padding: 0px;
+    position: relative; /* Para posicionar el botón "Volver" */
+}
+
+/* Estilos para el botón "Volver" */
+#volver-conceptos-b2 {
+    position: fixed; /* Fija el botón en la pantalla */
+    top: 600px; /* Distancia desde la parte superior */
+    left: 20px; /* Distancia desde la izquierda */
+    background-color: #4CAF50; /* Verde claro */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    display: flex; /* Alinea el ícono y el texto */
+    align-items: center; /* Centra verticalmente */
+    gap: 10px; /* Espacio entre el ícono y el texto */
+    font-size: 16px; /* Tamaño del texto */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+#volver-conceptos-b2:hover {
+    background-color: #388E3C; /* Verde más oscuro */
+}
+
+/* Contenedor del título */
+#contenido-conceptos-b2 .titulo-container {
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #4CAF50; /* Verde claro */
+    padding: 15px 30px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    display: inline-block; /* Ajusta el contenedor al tamaño del texto */
+}
+
+#contenido-conceptos-b2 .titulo {
+    font-size: 32px;
+    font-weight: bold;
+    color: white; /* Letras blancas */
+    margin: 0; /* Elimina el margen por defecto */
+}
+
+/* Contenedor de los botones en círculos */
+#contenido-conceptos-b2 .botones-conceptosb2 {
+    display: flex;
+    flex-direction: column; /* Los botones se apilan verticalmente */
+    align-items: center; /* Centra los botones horizontalmente */
+    gap: 15px; /* Espacio entre los botones */
+}
+
+/* Estilos base para los botones ovalados */
+#contenido-conceptos-b2 .boton-geom,
+#contenido-conceptos-b2 .boton-medidas,
+#contenido-conceptos-b2 .boton-area {
+    background-color: #C8E6C9; /* Verde claro */
+    width: 120px; /* Ancho más pequeño */
+    height: 80px; /* Altura más pequeña */
+    border-radius: 40px; /* Ovalado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    padding: 10px; /* Espaciado interno */
+}
+
+/* Efecto al pasar el mouse */
+#contenido-conceptos-b2 .boton-geom:hover,
+#contenido-conceptos-b2 .boton-medidas:hover,
+#contenido-conceptos-b2 .boton-area:hover {
+    transform: scale(1.05); /* Agranda el botón */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+}
+
+/* Contenedor de imágenes */
+#contenido-conceptos-b2 .imagenes-bloque2 img:nth-child(1) {
+    width: 300px; /* Ancho específico para la primera imagen */
+    top: 310px; /* Posición desde arriba */
+    left: 200px; /* Posición desde la izquierda */
+}
+
+#contenido-conceptos-b2 .imagenes-bloque2 img:nth-child(2) {
+    width: 500px; /* Ancho específico para la primera imagen */
+    top: 250px; /* Posición desde arriba */
+    left: 900px; /* Posición desde la izquierda */
+}
+
+/* Contenedor principal de la sección "Juega y diviértete" para Bloque 2 */
+#contenido-juega-b2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-color: #E8F5E9; /* Verde claro */
+    padding: 0px;
+    position: relative; /* Para posicionar el botón "Volver" */
+}
+
+/* Estilos para el botón "Volver" */
+#volver-juega-b2 {
+    position: fixed; /* Fija el botón en la pantalla */
+    top: 600px; /* Distancia desde la parte superior */
+    left: 20px; /* Distancia desde la izquierda */
+    background-color: #4CAF50; /* Verde claro */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    display: flex; /* Alinea el ícono y el texto */
+    align-items: center; /* Centra verticalmente */
+    gap: 10px; /* Espacio entre el ícono y el texto */
+    font-size: 16px; /* Tamaño del texto */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+#volver-juega-b2:hover {
+    background-color: #388E3C; /* Verde más oscuro */
+}
+
+/* Contenedor del título */
+#contenido-juega-b2 .titulo-container {
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #4CAF50; /* Verde claro */
+    padding: 15px 30px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    display: inline-block; /* Ajusta el contenedor al tamaño del texto */
+}
+
+#contenido-juega-b2 .titulo {
+    font-size: 32px;
+    font-weight: bold;
+    color: white; /* Letras blancas */
+    margin: 0; /* Elimina el margen por defecto */
+}
+
+/* Contenedor de los botones */
+#contenido-juega-b2 .botones-juega-b2 {
+    display: flex;
+    flex-direction: column; /* Los botones se apilan verticalmente */
+    align-items: center; /* Centra los botones horizontalmente */
+    gap: 25px; /* Espacio entre los botones */
+}
+
+/* Estilos base para los botones */
+#contenido-juega-b2 .boton-juega {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background-color: #C8E6C9; /* Verde claro */
+    width: 500px; /* Ancho más grande para acomodar el texto */
+    height: 80px; /* Altura más pequeña */
+    border-radius: 40px; /* Ovalado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    padding: 30px 30px; /* Espaciado interno */
+}
+
+/* Efecto al pasar el mouse */
+#contenido-juega-b2 .boton-juega:hover {
+    transform: scale(1.05); /* Agranda el botón */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+}
+
+/* imágenes */
+#contenido-juega-b2 .imagenes-juega-b2 img:nth-child(1) {
+    width: 300px; /* Ancho específico para la primera imagen */
+    top: 310px; /* Posición desde arriba */
+    left: 180px; /* Posición desde la izquierda */
+}
+
+#contenido-juega-b2 .imagenes-juega-b2 img:nth-child(2) {
+    width: 300px; /* Ancho específico para la primera imagen */
+    top: 310px; /* Posición desde arriba */
+    left: 1000px; /* Posición desde la izquierda */
+}
+
+/* Contenedor principal de la sección "Acepta el reto" para Bloque 2 */
+#contenido-reto-b2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-color: #E8F5E9; /* Verde claro */
+    padding: 0px;
+    position: relative; /* Para posicionar el botón "Volver" */
+}
+
+/* Estilos para el botón "Volver" */
+#volver-reto-b2 {
+    position: fixed; /* Fija el botón en la pantalla */
+    top: 600px; /* Distancia desde la parte superior */
+    left: 20px; /* Distancia desde la izquierda */
+    background-color: #4CAF50; /* Verde claro */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    display: flex; /* Alinea el ícono y el texto */
+    align-items: center; /* Centra verticalmente */
+    gap: 10px; /* Espacio entre el ícono y el texto */
+    font-size: 16px; /* Tamaño del texto */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+#volver-reto-b2:hover {
+    background-color: #388E3C; /* Verde más oscuro */
+}
+
+/* Contenedor del título */
+#contenido-reto-b2 .titulo-container {
+    background-color: #4CAF50; /* Verde claro */
+    padding: 15px 30px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    display: inline-block; /* Ajusta el contenedor al tamaño del texto */
+    margin-bottom: 30px; /* Margen inferior */
+    text-align: center; /* Centra el texto */
+}
+
+#contenido-reto-b2 .titulo {
+    font-size: 32px; /* Tamaño del texto */
+    font-weight: bold; /* Texto en negrita */
+    color: white; /* Texto blanco */
+    margin: 0; /* Elimina el margen por defecto */
+}
+
+/* Recuadro de texto */
+#contenido-reto-b2 .recuadro-texto {
+    background-color: white; /* Fondo blanco */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    max-width: 600px; /* Ancho máximo */
+    width: 90%; /* Ancho relativo */
+    margin-bottom: 30px; /* Margen inferior */
+    text-align: center; /* Centra el texto */
+    margin-top: 50px; /* Mueve hacia abajo */
+    margin-left: 70px; /* Mueve hacia la derecha */   
+}
+
+#contenido-reto-b2 .recuadro-texto p {
+    font-size: 18px; /* Tamaño del texto */
+    color: #333; /* Color del texto */
+    margin: 0; /* Elimina el margen por defecto */
+}
+
+/* Botón "Hagámoslo" */
+#contenido-reto-b2 .boton-hagamoslo {
+    position: absolute;
+    top: 500px; /* Espacio desde la parte superior */
+    right: 10px; /* Lo alinea a la derecha */
+    background-color: #4CAF50; /* Verde claro */
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#contenido-reto-b2 .boton-hagamoslo:hover {
+    background-color: #388E3C; /* Verde más oscuro */
+}
+
+/* Contenedor de imágenes */
+#contenido-reto-b2 .imagenes-reto-b2 {
+    display: flex;
+    justify-content: space-between; /* Distribuye las imágenes */
+    gap: 50px; /* Espacio entre imágenes */
+}
+
+#contenido-reto-b2 .imagenes-reto-b2 img:nth-child(1) {
+    width: 400px; /* Tamaño personalizado para la primera imagen */
+    margin-left: 800px; /* Margen desde la izquierda */
+    margin-top: 0px; /* Margen desde arriba */
+}
+
+#contenido-reto-b2 .imagenes-reto-b2 img:nth-child(2) {
+    width: 200px;
+    align-self: flex-start; /* Asegura que se alinee arriba */
+    margin-left: 1200px;
+}
+#juegaDiviertete {
+    display: none;
+  }
+
+
+/* Estilos para el contenedor de juegos */
+#juego-contenedor {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 1000;
+    overflow: auto;
+}
+
+/* Botón para cerrar juegos */
+.cerrar-juego {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.boton-juego {
+    padding: 12px 25px;
+    background-color: #ffc107;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.boton-juego:hover {
+    background-color: #ff9800;
+    transform: scale(1.05);
+}
+
+

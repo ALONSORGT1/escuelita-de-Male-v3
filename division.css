@@ -1,0 +1,212 @@
+.banner {
+    background: #20b709;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.banner img {
+    height: 50px;
+}
+
+footer {
+    background-color: rgb(87, 84, 84);
+    color: white;
+    text-align: right; /* Alinea el texto a la izquierda */
+    padding: 10px 20px;
+    width: auto; /* Ajusta el ancho al tamaño del contenido */
+    position: fixed; /* Mantiene el footer fijo en la parte inferior */
+    bottom: 0;
+    right: 0; /* Alinea el footer en la esquina izquierda */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Baloo+2:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Baloo 2', cursive;
+  background: linear-gradient(to bottom right, #FFF8E1, #FFE0B2);
+  color: #4E342E;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.encabezado .logo {
+  width: 70px;
+  height: auto;
+  animation: giroLogo 3s infinite linear;
+}
+
+@keyframes giroLogo {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+
+.encabezado h1 {
+  font-size: 32px;
+  font-family: 'Fredoka One', cursive;
+  text-shadow: 2px 2px #F57C00;
+}
+
+/* Contenedor del juego */
+.juego-contenedor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  animation: aparecerSuave 1s ease-in;
+}
+
+@keyframes aparecerSuave {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.problema {
+  font-size: 26px;
+  font-weight: bold;
+  color: #E65100;
+  margin-bottom: 20px;
+  background: #FFF3E0;
+  padding: 10px 20px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+
+.pastel-ajolote-contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.ajolote-pequeno {
+  
+  animation: saltarAjolote 2s infinite;
+  width: 250px;
+    height: 250px;
+}
+
+@keyframes saltarAjolote {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* Pastel */
+.pastel-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color: #FFD54F;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 10px #FFF8E1, 0 0 10px #FBC02D;
+  transition: transform 0.3s ease;
+}
+
+.pastel-container:hover {
+  transform: scale(1.05);
+}
+
+.porcion {
+  position: absolute;
+  width: 50%;
+  height: 2px;
+  background-color: #6D4C41;
+  top: 50%;
+  left: 50%;
+  transform-origin: left center;
+}
+
+/* Input + botón */
+input[type="number"] {
+  padding: 15px;
+  font-size: 20px;
+  border-radius: 12px;
+  border: 3px solid #F57C00;
+  outline: none;
+  width: 200px;
+  margin: 10px 0;
+  text-align: center;
+  background: #FFF8E1;
+  color: #BF360C;
+  font-weight: bold;
+  transition: border 0.3s ease;
+}
+
+input[type="number"]:focus {
+  border: 3px solid #EF6C00;
+}
+
+button {
+  padding: 12px 25px;
+  background-color: #FFA726;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  font-family: 'Fredoka One', cursive;
+}
+
+button:hover {
+  transform: scale(1.08);
+  background-color: #FB8C00;
+}
+
+.feedback {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 22px;
+  font-family: 'Fredoka One', cursive;
+}
+
+.feedback.correcto {
+  color: #2E7D32;
+  text-shadow: 1px 1px #A5D6A7;
+}
+
+.feedback.incorrecto {
+  color: #C62828;
+  text-shadow: 1px 1px #FFCDD2;
+}
+
+
+  .volver-btn {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3807fa;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  
+
+  

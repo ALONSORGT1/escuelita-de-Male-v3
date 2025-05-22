@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Matemáticas</title>
+    <link rel="stylesheet" href="primaria.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- NiceGUI CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nicegui@1.2.4/dist/nicegui.css">
+    <style>
+        /* Estilos adicionales para las tarjetas */
+        .card-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.3);
+            width: 350px;
+            max-width: 90%;
+            animation: fadeIn 0.3s;
+        }
+        
+        .card-content h3 {
+            color: #4a6baf;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .card-content ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .card-content li {
+            margin-bottom: 8px;
+        }
+        
+        .card-note {
+            font-style: italic;
+            color: #666;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+        
+        .close-card {
+            background: #4a6baf;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+        
+        .close-card:hover {
+            background: #3a5a9f;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -45%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+        
+        /* Overlay para fondo oscuro */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner -->
+    <div class="banner">
+        <img src="imagess/tecnm.png" alt="Logo Izquierdo">
+        Aprende en línea con la escuelita de Male ¡Aprender es una aventura en la escuelita de Male!
+        <img src="imagess/itp.png" alt="Logo Derecho">
+    </div>
+
+   <!-- Contenido principal (visible por defecto) -->
+<div class="contenido" id="contenido-principal">
+    <img src="imagess/ajolote.png" alt="Icono Izquierdo" class="izquierda">
+    <div class="titulo-container">
+        <div class="titulo">Matemáticas</div>
+        <div class="subtitulo">5to grado</div>
+    </div>
+    <img src="imagess/figurageo.jpg" alt="Icono Derecho" class="derecha">
+    <div class="desafio">🏆 ¡El desafío comienza ahora!</div>
+
+    <!-- Botones modificados para mostrar tarjetas -->
+    <div class="botones">
+        <button class="boton" id="bloque1" onclick="showCard('bloque1')">Bloque 1</button>
+        <button class="boton" id="bloque2" onclick="showCard('bloque2')">Bloque 2</button>
+        <button class="boton" id="acerca" onclick="showCard('acerca')">Acerca de...</button>
+    </div>
+</div>
+
+<!-- Overlay para fondo oscuro -->
+<div class="overlay" id="overlay" onclick="hideCard()"></div>
+
+<!-- Contenedor de tarjetas -->
+<div class="card-container" id="card-container">
+    <div class="card-content" id="card-content"></div>
+    <button class="close-card" onclick="hideCard()">Cerrar</button>
+</div>
+
+<!-- Resto de tu contenido HTML (Acerca de, Bloques, etc.) -->
+<!-- Contenido de "Acerca de" (oculto por defecto) -->
+<div class="contenido" id="contenido-acerca" style="display: none;">
+    <button class="boton-flecha" id="volver-acerca">
+        <i class="fas fa-arrow-left"></i> Volver
+    </button>
+    <div class="titulo-container">
+        <div class="titulo">MATEMÁTICAS 5</div>
+    </div>
+    <div class="contenido-acerca">
+        <div class="columna">
+            <p>En la escuelita de Male, aprender es muy divertido.📚✨</p>
+            <p>Prepárate para esta aventura que pondrá a prueba tu ingenio matemático.</p>
+            <p>¿Estás listo para demostrar que eres un genio?</p>
+            <ul>
+                <li>🔢Explora el mundo de los números, las figuras geométricas y los cálculos rápidos.</li>
+                <li>🎥Aprende con videos llenos de trucos y consejos para mejorar tus habilidades.</li>
+                <li>🎮Divíertete con los retos y actividades diseñadas para hacerte un maestro de las matemáticas.</li>
+                <li>🏆Presume tus logros con honor.</li>
+            </ul>
+        </div>
+        <div class="columna-imagen">
+            <img src="imagess/ajolote.png" alt="Imagen de ajolote">
+        </div>
+        <div class="columna">
+            <h3>📌¿Qué te espera en esta aventura?</h3>
+            <p>
+                <li><strong>📕Números y Operaciones:</strong> Aprende sumas, restas, multiplicaciones y divisiones con Toni. Juega en El Mercado Matemático, descubre trucos para cálculos rápidos y vence el reto contrarreloj.</li>
+                <li><strong>📗Geometría:</strong> Explora figuras, perímetro y área mientras construyes tu ciudad. Encuentra formas ocultas y observa cómo las matemáticas están en todas partes.</li>
+            </p>
+            <p>🔥 ¿Listo para el desafío? ¡Acompaña a Toni y demuestra tu talento matemático!🚀✨</p>
+        </div>
+    </div>
+</div>
+
+<!-- Contenido de "Bloque 1" (oculto por defecto) -->
+<div class="contenido" id="contenido-bloque1" style="display: none;">
+    <button class="boton-flecha" id="volver-bloque1">
+        <i class="fas fa-arrow-left"></i> Volver
+    </button>
+    <div class="contenido-bloque1">
+        <div class="titulo-container">
+            <div class="titulo">Bloque 1: Números y Operaciones</div>
+        </div>
+        <div class="botones-bloque1">
+            <button class="boton-bloque1" id="boton-conceptos">📚Descubre y Aprende con conceptos</button>
+            <button class="boton-bloque1" id="boton-juega">🎮Juega y Diviértete</button>
+            <button class="boton-bloque1" id="boton-mira">📹Mira y Explora</button>
+            <button class="boton-bloque1" id="boton-desafio">🏆Acepta el desafío</button>
+        </div>
+        <div class="imagenes-bloque1">
+            <img src="imagess/ajolotePiza.png" alt="Imagen de ajolote" class="inferior-izquierda">
+            <img src="imagess/ajolote.png" alt="Imagen de figura geométrica" class="superior-derecha">
+        </div>
+    </div>
+</div>
+
+<!-- Contenido de "Descubre y Aprende con conceptos" -->
+<div class="contenido" id="contenido-conceptos" style="display: none;">
+    <button class="boton-flecha" id="volver-conceptos">
+        <i class="fas fa-arrow-left"></i> Volver
+    </button>
+    <div class="contenido-conceptos">
+        <div class="titulo-container">
+            <div class="titulo">Descubre y Aprende con conceptos</div>
+        </div>
+        <div class="botones-conceptosb1">
+            <button class="boton-sum" id="boton-suma">Sumas y Restas</button>
+            <button class="boton-mult" id="boton-mult">Multiplicación</button>
+            <button class="boton-div" id="boton-div">División</button>
+        </div>
+        <div class="imagenes-bloque1">
+            <img src="imagess/conceptos1.png" alt="Imagen de ajolote" class="inferior-izquierda">
+            <img src="imagess/ajolote.png" alt="Imagen de figura geométrica" class="superior-derecha">
+        </div>
+    </div>
+</div>
+
+<!-- Contenido de "Juega y diviértete-->
+<div class="contenido" id="contenido-juega" style="display: none;">
+    <button class="boton-flecha" id="volver-juega">
+        <i class="fas fa-arrow-left"></i> Volver
+    </button>
+    <div class="contenido-juega">
+        <div class="titulo-container">
+            <div class="titulo">Juega y diviértete</div>
+        </div>
+        <div class="botones-juega">
+            <!-- Botón 1: Misión Números Perdidos -->
+            <a href="suma_resta.html">
+                <button class="boton-juega" id="boton-sumayresta">
+                    Misión: Resuelve sumas y restas para ayudar a Toni.
+                </button>
+            </a>
+
+            <!-- Botón 2: Multiplica Ingredientes -->
+            <a href="multiplicacion.html">
+                <button class="boton-juega" id="boton-multiplica">
+                    Multiplica ingredientes antes de que se acabe el tiempo.
+                </button>
+            </a>
+
+            <!-- Botón 3: Pastelería Divisoria -->
+            <a href="division.html">
+                <button class="boton-juega" id="boton-divide">
+                    Pastelería Divisora.
+                </button>
+            </a>
+        </div>
+
+        <div class="imagenes-juega">
+            <img src="imagess/ingredientes.jpg" alt="Ingredientes" class="inferior-izquierda">
+            <img src="imagess/ajolote.png" alt="Ajolote" class="superior-derecha">
+        </div>
+    </div>
+</div>
+
+<!-- Contenido de "Mira y Explora" -->
+<div class="contenido" id="contenido-mira" style="display: none;">
+    <button class="boton-flecha" id="volver-mira">
+        <i class="fas fa-arrow-left"></i> Volver
+    </button>
+    <div class="contenido-mira">
+        <div class="titulo-container">
+            <div class="titulo">La magia de la división</div>
+        </div>
+        <div class="video-container">
+            <!-- Video local -->
+            <video controls width="100%">
+                <source src="video/division.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de videos.
+            </video>
+        </div>
+    </div>
+</div>
+
+<!-- Contenido de "Acepta el reto" -->
+<div class="contenido" id="contenido-reto" style="display: none;">
+    <button class="boton-flecha" id="volver-reto">
+        <i class="fas fa-arrow-left"></i> Volver
+    </button>
+    <div class="contenido-reto">
+        <!-- Contenedor del título -->
+        <div class="titulo-container">
+            <div class="titulo">Acepta el reto</div>
+        </div>
+
+        <!-- Recuadro de texto -->
+        <div class="recuadro-texto">
+            <p>
+                Toni está en la escuelita de Male y se enfrenta a un laberinto mágico. Para avanzar por cada pasillo y abrir las puertas, debe resolver distintos retos que mezclan sumas, restas, multiplicaciones y divisiones.
+                Al final del laberinto, Toni encontrará un cofre con un premio especial. ¡Solo podrá abrirlo si ha resuelto correctamente todos los acertijos matemáticos!
+            </p>
+        </div>
+
+        <!-- Botón "Hagámoslo" -->
+        <button onclick="window.location.href='desafioB1.html'" class="boton-juego">
+            Desafío Laberinto Matemático
+        </button>
+
+        <!-- Contenedor de imágenes -->
+        <div class="imagenes-reto">
+            <img src="imagess/laberinto.png" alt="Imagen 1" class="imagen-reto-1">
+            <img src="imagess/ajo.png" alt="Imagen 2" class="imagen-reto-2">
+        </div>
+    </div>
+</div>
+
+
+<!-- Contenido de "Bloque 2" (oculto por defecto) -->
+<div id="contenido-principal" style="display: block;">
+    <!-- tus botones como Bloque 2 están aquí -->
+</div>
+<div class="contenido" id="contenido-bloque2" style="display: none;">
+    <button class="boton-flecha" id="volver-bloque2">
+        <i class="fas fa-arrow-left"></i> Volver
+    </button>
+    <div class="contenido-bloque2">
+        <div class="titulo-container">
+            <div class="titulo">Bloque 2: Geometría y Medidas</div>
+        </div>
+        <div class="botones-bloque2">
+            <button class="boton-bloque2" id="boton-conceptos-b2">📚Descubre y Aprende con conceptos</button>
+            <button class="boton-bloque2" id="boton-juega-b2">🎮Juega y Diviértete</button>
+            <button class="boton-bloque2" id="boton-mira-b2">📹Mira y Explora</button>
+            <button class="boton-bloque2" id="boton-desafio-b2">🏆Acepta el desafío</button>
+        </div>
+        <div class="imagenes-bloque2">
+            <img src="imagess/ajolotePiza.png" alt="Imagen de ajolote" class="inferior-izquierda">
+            <img src="imagess/ajolote.png" alt="Imagen de figura geométrica" class="superior-derecha">
+        </div>
+    </div>
+</div>
+
+<!-- Contenido de "Descubre y Aprende con conceptos" para Bloque 2 -->
+<div class="contenido" id="contenido-conceptos-b2" style="display: none;">
+    <button class="boton-flecha" id="volver-conceptos-b2">
+        <i class="fas fa-arrow-left"></i> Volver
+    </button>
+    <div class="contenido-conceptos-b2">
+        <div class="titulo-container">
+            <div class="titulo">Descubre y Aprende con conceptos</div>
+        </div>
+        <div class="botones-conceptosb2">
+            <button class="boton-geom" id="boton-geometria">Ángulos</button>
+            <button class="boton-medidas" id="boton-medidas">Diámetro y Perimetro</button>
+            <button class="boton-area" id="boton-area">Segmentos</button>
+        </div>
+        <div class="imagenes-bloque2">
+            <img src="imagess/ajo.png" alt="Imagen de ajolote" class="inferior-izquierda">
+            <img src="imagess/ajolotePiza.png" alt="Imagen de figura geométrica" class="superior-derecha">
+        </div>
+    </div>
+</div>
+
+<!-- Contenido de "Juega y diviértete" para Bloque 2 -->
+<div class="contenido" id="contenido-juega-b2" style="display: none;">
+    <button class="boton-flecha" id="volver-juega-b2">
+        <i class="fas fa-arrow-left"></i> Volver
+    </button>
+    <div class="contenido-juega-b2">
+        <div class="titulo-container">
+            <div class="titulo">Juega y diviértete</div>
+        </div>
+        <div class="botones-juega-b2">
+            <!-- Botón 1: Misión Figuras Perdidas -->
+            <button class="boton-juega" id="boton-figuras">
+                Figuras Perdidas: Encuentra y clasifica las figuras geométricas ocultas en el mapa.
+            </button>
+
+            <!-- Botón 2: Construye tu Ciudad -->
+            <button class="boton-juega" id="boton-construye">
+                Laberinto del Perímetro: Calcula el perímetro para hallar la salida.
+            </button>
+
+            <!-- Botón 3: Área y Perímetro Mágico -->
+            <button class="boton-juega" id="boton-area-perimetro">
+                Ángulos Mágicos: Mide los ángulos correctos para lanzar hechizos.
+            </button>
+        </div>
+        <div class="imagenes-juega-b2">
+            <img src="imagess/laberinto.png" alt="Ciudad" class="inferior-izquierda">
+            <img src="imagess/ajolote.png" alt="Ajolote" class="superior-derecha">
+        </div>
+    </div>
+</div>
+
+<!-- Contenido de "Bloque 2" (oculto por defecto) -->
+<div class="contenido" id="contenido-bloque2" style="display: none;">
+    <button class="boton-flecha" id="volver-bloque2">
+        <i class="fas fa-arrow-left"></i> Volver
+    </button>
+    <div class="contenido-bloque2">
+        <div class="titulo-container">
+            <div class="titulo">Bloque 2: Geometría y Medidas</div>
+        </div>
+        <div class="botones-bloque2">
+            <button class="boton-bloque2" id="boton-conceptos-b2">📚Descubre y Aprende con conceptos</button>
+            <button class="boton-bloque2" id="boton-juega-b2">🎮Juega y Diviértete</button>
+            <button class="boton-bloque2" id="boton-mira-b2">📹Mira y Explora</button>
+            <button class="boton-bloque2" id="boton-desafio-b2">🏆Acepta el desafío</button>
+        </div>
+        <div class="imagenes-bloque2">
+            <img src="imagess/ajoloteGeo.png" alt="Imagen de ajolote" class="inferior-izquierda">
+            <img src="imagess/geometria.png" alt="Figura geométrica" class="superior-derecha">
+        </div>
+    </div>
+</div>
+
+
+<!-- Contenido de "Mira y Explora" para Bloque 2 -->
+<div class="contenido" id="contenido-mira-b2" style="display: none;">
+    <button class="boton-flecha" id="volver-mira-b2">
+        <i class="fas fa-arrow-left"></i> Volver
+    </button>
+    <div class="contenido-mira-b2">
+        <div class="titulo-container">
+            <div class="titulo">La magia de la geometría</div>
+        </div>
+        <div class="video-container">
+            <!-- Video local -->
+            <video controls width="100%">
+                <source src="video/geometria.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de videos.
+            </video>
+        </div>
+    </div>
+</div>
+
+<!-- Contenido de "Acepta el reto" para Bloque 2 -->
+<div class="contenido" id="contenido-reto-b2" style="display: none;">
+    <button class="boton-flecha" id="volver-reto-b2">
+        <i class="fas fa-arrow-left"></i> Volver
+    </button>
+    <div class="contenido-reto-b2">
+        <!-- Contenedor del título -->
+        <div class="titulo-container">
+            <div class="titulo">Acepta el reto</div>
+        </div>
+
+        <!-- Recuadro de texto -->
+        <div class="recuadro-texto">
+            <p>
+                ¡Toni necesita tu ayuda! Ha encontrado un mapa lleno de figuras geométricas, pero algunas están incompletas. Tu misión es identificar qué figuras faltan y dibujarlas correctamente para completar el desafío.
+
+
+🔹 Encuentra los triángulos, cuadrados y círculos que faltan.
+🔹 Mide los ángulos y verifica que sean correctos.
+🔹 Ayuda a Toni a organizar las figuras por sus propiedades!
+
+
+¡Resuelve el reto y conviértete en un experto en geometría!
+            </p>
+        </div>
+
+        <!-- Botón "Hagámoslo" -->
+        <button class="boton-hagamoslo" id="boton-hagamoslo-b2">
+            ¡Hagámoslo!
+        </button>
+
+        <!-- Contenedor de imágenes -->
+        <div class="imagenes-reto-b2">
+            <img src="imagess/laberinto2.png" alt="Imagen 1" class="imagen-reto-1">
+            <img src="imagess/ajo.png" alt="Imagen 2" class="imagen-reto-2">
+        </div>
+    </div>
+</div>
+
+    <!-- NiceGUI JS -->
+    <script src="https://cdn.jsdelivr.net/npm/nicegui@1.2.4/dist/nicegui.js"></script>
+    <!-- Tu archivo JavaScript -->
+    <script src="primaria.js"></script>
+    
+    <script>
+        // Función para mostrar tarjetas de resumen
+        function showCard(type) {
+            const container = document.getElementById('card-container');
+            const content = document.getElementById('card-content');
+            const overlay = document.getElementById('overlay');
+            
+            // Mostrar overlay y contenedor
+            overlay.style.display = 'block';
+            container.style.display = 'block';
+            
+            // Configurar contenido según el tipo
+            if(type === 'bloque1') {
+                content.innerHTML = `
+                    <h3>Bloque 1: Números y Operaciones</h3>
+                    <p>En este bloque aprenderás sobre:</p>
+                    <ul>
+                        <li>Sumas y restas con Toni</li>
+                        <li>Multiplicación de ingredientes</li>
+                        <li>División en la pastelería</li>
+                        <li>Desafío contrarreloj</li>
+                    </ul>
+                    <p class="card-note">Haz doble clic en el botón "Bloque 1" para entrar al contenido completo</p>
+                `;
+            } else if(type === 'bloque2') {
+                content.innerHTML = `
+                    <h3>Bloque 2: Geometría y Medidas</h3>
+                    <p>En este bloque explorarás:</p>
+                    <ul>
+                        <li>Figuras geométricas ocultas</li>
+                        <li>Cálculo de perímetros</li>
+                        <li>Ángulos mágicos</li>
+                        <li>Construcción de ciudades</li>
+                    </ul>
+                    <p class="card-note">Haz doble clic en el botón "Bloque 2" para entrar al contenido completo</p>
+                `;
+            } else {
+                content.innerHTML = `
+                    <h3>Acerca de la Escuelita de Male</h3>
+                    <p>Una plataforma educativa donde:</p>
+                    <ul>
+                        <li>Aprenderás matemáticas de forma divertida</li>
+                        <li>Encontrarás videos, juegos y desafíos</li>
+                        <li>Especial para 5to grado de primaria</li>
+                        <li>Desarrollado con ❤️ en el TecNM</li>
+                    </ul>
+                    <p class="card-note">Haz doble clic en el botón "Acerca de" para ver más información</p>
+                `;
+            }
+            
+            // Configurar el botón para que al hacer doble clic cierre y redirija
+            const btn = document.getElementById(type);
+            btn.ondblclick = function() {
+                hideCard();
+                // Aquí puedes agregar la lógica para mostrar el contenido correspondiente
+                // Por ejemplo, usando tu sistema actual de mostrar/ocultar secciones
+                if(type === 'bloque1') {
+                    document.getElementById('contenido-principal').style.display = 'none';
+                    document.getElementById('contenido-bloque1').style.display = 'block';
+                } else if(type === 'bloque2') {
+                    document.getElementById('contenido-principal').style.display = 'none';
+                    document.getElementById('contenido-bloque2').style.display = 'block';
+                } else {
+                    document.getElementById('contenido-principal').style.display = 'none';
+                    document.getElementById('contenido-acerca').style.display = 'block';
+                }
+            };
+        }
+        
+        // Función para ocultar tarjetas
+        function hideCard() {
+            document.getElementById('card-container').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+        
+        // Cerrar al hacer clic fuera de la tarjeta
+        document.getElementById('overlay').addEventListener('click', hideCard);
+    </script>
+</body>
+<footer>
+    Tecnológico Nacional de México - Campus Pachuca - Proyecto de asignatura - Programación Web - 2025
+</footer>
+</html>

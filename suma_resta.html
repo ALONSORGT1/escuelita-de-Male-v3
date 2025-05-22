@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión Números Perdidos</title>
+    <link rel="stylesheet" href="primaria.css">
+    <style>
+        /* Contenedor del juego */
+        .juego-contenedor {
+            padding: 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Títulos */
+        .titulo {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ff6f61;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .problema {
+            font-size: 30px;
+            margin: 30px 0;
+            color: #4CAF50;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .opciones {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .opcion {
+            padding: 15px 25px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .opcion:hover {
+            background-color: #218838;
+        }
+
+        .opcion:active {
+            background-color: #1e7e34;
+        }
+
+        /* Resultados */
+        .resultado {
+            font-size: 24px;
+            margin: 20px 0;
+            min-height: 30px;
+        }
+
+        .puntaje {
+            font-size: 22px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .temporizador {
+            font-size: 22px;
+            color: #d9534f;
+            font-weight: bold;
+        }
+
+        /* Estilo del botón de volver */
+        .volver-btn {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .volver-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Ajolote */
+        .ajolote {
+            position: absolute;
+            top: 120px;
+            right: 10px;
+            width: 120px;
+            animation: ajoloteAnim 3s infinite;
+            width: 180px;
+            height: auto;
+        }
+        .imagen-grande {
+          width: 800px;
+          height: auto;
+      }
+
+        @keyframes ajoloteAnim {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <img src="imagess/tecnm.png" alt="Logo Izquierdo">
+        Aprende en línea con la escuelita de Male ¡Aprender es una aventura en la escuelita de Male!
+        <img src="imagess/itp.png" alt="Logo Derecho">
+    </div>
+
+    <div class="juego-contenedor">
+        <img src="imagess/ajo.png" alt="Ajolote" class="ajolote"> <!-- Ajolote en la esquina -->
+        <h1 class="titulo">Misión Números Perdidos</h1>
+        <p>¡Ayuda a Toni a encontrar los números correctos resolviendo sumas y restas!</p>
+        
+        <div class="temporizador">Tiempo: 60 segundos</div>
+        <div class="puntaje">Puntos: 0</div>
+        
+        <div class="problema" id="problema">¿?</div>
+        
+        <div class="opciones" id="opciones">
+            <!-- Las opciones se generarán con JavaScript -->
+        </div>
+        
+        <div class="resultado" id="resultado"></div>
+    </div>
+
+    <button class="volver-btn" onclick="cerrarJuego()">Volver</button> <!-- Volver a la página anterior -->
+
+
+   
+    <script>
+        let puntaje = 0;
+        let tiempoRestante = 60;
+        let temporizador;
+        let audioCorrecto = new Audio('audio/aplauso.mp3');
+        let audioIncorrecto = new Audio('audio/perder.mp3');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            generarProblema();
+            iniciarTemporizador();
+        });
+
+        function iniciarTemporizador() {
+            temporizador = setInterval(function() {
+                tiempoRestante--;
+                document.querySelector('.temporizador').textContent = `Tiempo: ${tiempoRestante} segundos`;
+                
+                if (tiempoRestante <= 0) {
+                    clearInterval(temporizador);
+                    document.getElementById('problema').textContent = '¡Juego terminado!';
+                    document.getElementById('opciones').innerHTML = '';
+                    document.getElementById('resultado').textContent = `Puntuación final: ${puntaje}`;
+                }
+            }, 1000);
+        }
+
+        function generarProblema() {
+            const num1 = Math.floor(Math.random() * 50) + 1;
+            const num2 = Math.floor(Math.random() * 50) + 1;
+            const esSuma = Math.random() > 0.5;
+            
+            let problema, respuestaCorrecta;
+            
+            if (esSuma) {
+                problema = `${num1} + ${num2} = ?`;
+                respuestaCorrecta = num1 + num2;
+            } else {
+                if (num1 >= num2) {
+                    problema = `${num1} - ${num2} = ?`;
+                    respuestaCorrecta = num1 - num2;
+                } else {
+                    problema = `${num2} - ${num1} = ?`;
+                    respuestaCorrecta = num2 - num1;
+                }
+            }
+            
+            document.getElementById('problema').textContent = problema;
+            
+            // Generar opciones de respuesta
+            const opciones = [respuestaCorrecta];
+            while (opciones.length < 4) {
+                const opcion = respuestaCorrecta + Math.floor(Math.random() * 10) - 5;
+                if (opcion !== respuestaCorrecta && !opciones.includes(opcion) && opcion > 0) {
+                    opciones.push(opcion);
+                }
+            }
+            
+            // Mezclar opciones
+            opciones.sort(() => Math.random() - 0.5);
+            
+            // Mostrar opciones
+            const opcionesHTML = opciones.map(opcion => 
+                `<button class="opcion" onclick="verificarRespuesta(${opcion}, ${respuestaCorrecta})">${opcion}</button>`
+            ).join('');
+            
+            document.getElementById('opciones').innerHTML = opcionesHTML;
+        }
+        
+        function verificarRespuesta(opcionSeleccionada, respuestaCorrecta) {
+            const resultadoElement = document.getElementById('resultado');
+            
+            if (opcionSeleccionada === respuestaCorrecta) {
+                resultadoElement.textContent = '¡Correcto! +10 puntos';
+                resultadoElement.style.color = 'green';
+                audioCorrecto.play();
+                puntaje += 10;
+            } else {
+                resultadoElement.textContent = `Incorrecto. La respuesta correcta era ${respuestaCorrecta}`;
+                resultadoElement.style.color = 'red';
+                audioIncorrecto.play();
+            }
+            
+            document.querySelector('.puntaje').textContent = `Puntos: ${puntaje}`;
+            
+            // Generar nuevo problema después de un breve retraso
+            setTimeout(generarProblema, 1500);
+        }
+        document.addEventListener("DOMContentLoaded", iniciarJuego);
+
+        function cerrarJuego() {
+            window.location.href = "primaria.html"; // O redirige donde quieras
+        }
+
+        window.onload = generarProblema;
+    </script>
+
+    <footer>
+        Tecnológico Nacional de México - Campus Pachuca - Proyecto de asignatura - Programación Web - 2025
+    </footer>
+</body>
+</html>

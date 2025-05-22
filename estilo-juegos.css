@@ -1,0 +1,212 @@
+body {
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(135deg, #fff3b0, #f6c1ff);
+    color: #444;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  header, footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #ff82a9;
+    color: white;
+  }
+  
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .contenedor-juego {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 0 20px #ffa8d0;
+    text-align: center;
+    max-width: 90%;
+  }
+  
+  #ajolote {
+    width: 80px;
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    z-index: 5;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .flotando {
+    animation: flotar 3s ease-in-out infinite;
+  }
+  
+  .vibrate {
+    animation: vibrar 0.3s linear;
+  }
+  
+  @keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+  
+  @keyframes vibrar {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(2deg); }
+    50% { transform: rotate(-2deg); }
+    75% { transform: rotate(2deg); }
+    100% { transform: rotate(0deg); }
+  }
+  
+  .boton-volver {
+    margin-top: 25px;
+    padding: 10px 20px;
+    background-color: #ffb347;
+    color: white;
+    text-decoration: none;
+    border-radius: 15px;
+    box-shadow: 0 4px #e69500;
+    font-weight: bold;
+  }
+  
+  .boton-volver:hover {
+    background-color: #ffa500;
+  }
+
+  /* Estilo base para los botones */
+.boton-juega {
+    background-color: #ff9d00; /* Color brillante de fondo */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform: scale(1);
+    text-align: center;
+    text-decoration: none;
+}
+
+.boton-juega:hover {
+    background-color: #ff6100; /* Cambio de color al pasar el ratón */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05); /* Efecto de "aumento" */
+    animation: moverBoton 0.5s ease forwards; /* Efecto de animación */
+}
+
+.boton-juega:active {
+    transform: scale(0.95); /* Efecto de presión */
+    background-color: #e45a00; /* Color más oscuro al hacer clic */
+}
+
+/* Animación al pasar el ratón */
+@keyframes moverBoton {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Efecto de brillos alrededor del botón al pasar el ratón */
+.boton-juega:hover {
+    animation: brilloBoton 1s infinite alternate;
+}
+
+/* Animación de brillo para el hover */
+@keyframes brilloBoton {
+    0% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 25px rgba(255, 255, 255, 1);
+    }
+}
+
+/* Estilo de los enlaces para eliminar subrayado */
+.boton-juega a {
+    text-decoration: none;
+    color: white;
+}
+
+  
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    width: 100%;
+  }
+  
+  header, footer {
+    background-color: #FF6347;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    background-color: #F0F8FF;
+  }
+  
+  .contenedor-juego {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  input[type="number"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+  }
+  
+  button {
+    background-color: #32CD32;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #28a745;
+  }
+  
+  .boton-volver {
+    background-color: #4682B4;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  .boton-volver:hover {
+    background-color: #5f9ea0;
+  }
+  

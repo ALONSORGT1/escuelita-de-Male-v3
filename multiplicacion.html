@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplica Ingredientes</title>
+    <link rel="stylesheet" href="multiplicacion.css">
+    <style>
+        .contenedor-ajolote-ingredientes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contenedor-ajolote {
+            flex: 0 0 auto;
+        }
+
+        .ajolote {
+            width: 200px;
+            height: auto;
+            animation: flotar 3s ease-in-out infinite;
+        }
+
+        @keyframes flotar {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+
+        #ingrediente-contenedor {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .ingrediente img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+        }
+
+        .boton-volver {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #8769ff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <img src="imagess/tecnm.png" alt="Logo Izquierdo">
+        Aprende en línea con la escuelita de Male ¡Aprender es una aventura en la escuelita de Male!
+        <img src="imagess/itp.png" alt="Logo Derecho">
+    </div>
+
+    <audio id="musicaFondo" autoplay loop>
+        <source src="audio/audio6.mp3" type="audio/mp3">
+        Tu navegador no soporta audio HTML5.
+    </audio>
+
+    <div class="juego-contenedor">
+        <h1>Multiplica Ingredientes</h1>
+        <p>Ayuda a Toni a calcular la cantidad correcta de ingredientes.</p>
+
+        <div class="contenedor-ajolote-ingredientes">
+            <div class="contenedor-ajolote">
+                <img src="imagess/ajo.png" alt="Ajolote" class="ajolote">
+            </div>
+
+            <div id="ingrediente-contenedor"></div>
+        </div>
+
+        <div class="problema" id="problema">¿?</div>
+
+        <input type="number" id="respuesta" placeholder="Escribe tu respuesta">
+        <button onclick="verificarRespuesta()">Verificar</button>
+
+        <div class="resultado" id="resultado"></div>
+
+        <button class="volver-btn" onclick="cerrarJuego()">Volver</button>
+    </div>
+
+    <footer>
+        Tecnológico Nacional de México - Campus Pachuca - Proyecto de asignatura - Programación Web - 2025
+    </footer>
+
+    <script>
+        const ingredientes = [
+        { nombre: "azúcar", imagen: "imagess/azucar.jpeg" },
+        { nombre: "leche", imagen: "imagess/leche.jpg" },
+        { nombre: "mantequilla", imagen: "imagess/mantequilla.png" },
+        { nombre: "esencia", imagen: "imagess/escencia.jpeg" },
+        { nombre: "colorante", imagen: "imagess/colorante.jpg" }
+        ];
+
+        let ingredienteActual;
+        let cantidadBase;
+        let multiplicador;
+        let respuestaCorrecta;
+
+        function iniciarJuego() {
+            ingredienteActual = ingredientes[Math.floor(Math.random() * ingredientes.length)];
+            cantidadBase = Math.floor(Math.random() * 9) + 1;
+            multiplicador = Math.floor(Math.random() * 9) + 2;
+
+            respuestaCorrecta = cantidadBase * multiplicador;
+
+            document.getElementById("problema").innerHTML = `¿${cantidadBase} cantidad${cantidadBase > 1 ? 'es' : ''} de 
+                <img src="${ingredienteActual.imagen}" alt="${ingredienteActual.nombre}" style="width: 40px; height: 40px; vertical-align: middle;"> 
+                (${ingredienteActual.nombre}) × ${multiplicador}, ¿cuántos vas a ocupar?`;
+
+            document.getElementById("respuesta").value = "";
+            document.getElementById("resultado").textContent = "";
+
+            document.getElementById("ingrediente-contenedor").innerHTML = `
+                <div class="ingrediente">
+                    <img src="${ingredienteActual.imagen}" alt="${ingredienteActual.nombre}">
+                    <p>${ingredienteActual.nombre}</p>
+                </div>
+            `;
+        }
+
+        function verificarRespuesta() {
+            const respuesta = parseInt(document.getElementById("respuesta").value);
+            const resultado = document.getElementById("resultado");
+
+            if (respuesta === respuestaCorrecta) {
+                resultado.textContent = "¡Correcto! Muy bien.";
+                resultado.style.color = "green";
+            } else {
+                resultado.textContent = `Incorrecto. Inténtalo otra vez.`;
+                resultado.style.color = "red";
+            }
+
+            setTimeout(iniciarJuego, 2000);
+        }
+
+        document.addEventListener("DOMContentLoaded", iniciarJuego);
+
+        function cerrarJuego() {
+            window.location.href = "primaria.html"; // O redirige donde quieras
+        }
+
+        window.onload = generarProblema;
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Figuras Perdidas</title>
+    <link rel="stylesheet" href="figuras-perdidas.css" />
+</head>
+<body>
+    <div class="banner">
+        <img src="imagess/tecnm.png" alt="Logo Izquierdo" />
+        Aprende en línea con la escuelita de Male ¡Aprender es una aventura en la escuelita de Male!
+        <img src="imagess/itp.png" alt="Logo Derecho" />
+    </div>
+
+    <div class="juego-contenedor">
+        <div class="obstacle" style="left: 100px; top: 150px;"></div>
+        <h1>🎯 Figuras Perdidas</h1>
+        <p>¡Ayuda a Toni a encontrar y clasificar las figuras geométricas ocultas en el mapa!</p>
+        
+        <div class="puntaje">Puntos: 0</div>
+        <div class="instrucciones" id="instrucciones">Selecciona una figura y luego haz clic en el lugar correcto del tablero.</div>
+        <div class="figuras-opciones" id="figuras-opciones"></div>
+        <div class="tablero" id="tablero"></div>
+        <div class="feedback" id="feedback"></div>
+        <button class="boton-volver" onclick="window.close()">Volver</button>
+    </div>
+
+    <footer>
+        Tecnológico Nacional de México - Campus Pachuca - Proyecto de asignatura - Programación Web - 2025
+    </footer>
+
+    <script src="figuras.js"></script>
+</body>
+</html>

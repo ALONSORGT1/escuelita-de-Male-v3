@@ -1,0 +1,164 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(to right, #ffe0ec, #e0f7fa);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #444;
+}
+
+.banner {
+    background: #20b709;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.banner img {
+    height: 50px;
+}
+
+footer {
+    background-color: rgb(87, 84, 84);
+    color: white;
+    text-align: right; /* Alinea el texto a la izquierda */
+    padding: 10px 20px;
+    width: auto; /* Ajusta el ancho al tamaño del contenido */
+    position: fixed; /* Mantiene el footer fijo en la parte inferior */
+    bottom: 0;
+    right: 0; /* Alinea el footer en la esquina izquierda */
+}
+/* Estilo del botón de volver */
+.volver-btn {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.volver-btn:hover {
+    background-color: #0056b3;
+}
+  
+  
+  #laberinto {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    margin: 20px auto;
+    background: #fff7e6;
+    border: 10px dashed #ffcc66;
+    box-shadow: 0 0 20px #ffcc66;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  #ajolote {
+    width: 40px;
+    height: 40px;
+    background-image: url('imagess/ajo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: saltito 0.6s infinite alternate;
+  }
+  
+  @keyframes saltito {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-5px); }
+  }
+  
+  #meta {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 30px;
+    animation: brilla 1s infinite;
+  }
+  
+  @keyframes brilla {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  .obstaculo {
+    width: 25px;
+    height: 25px;
+    background-color: #ff6666;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    position: absolute;
+    animation: pulso 1s infinite;
+  }
+  
+  @keyframes pulso {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  #pregunta-container {
+    text-align: center;
+    background-color: #ccf5ff;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    margin: 10px auto;
+    border-radius: 15px;
+    border: 3px solid #00ccff;
+    box-shadow: 0 0 10px #00ccff;
+  }
+  
+  #pregunta-container input {
+    font-size: 1em;
+    padding: 8px;
+    width: 70%;
+    border: 2px solid #00aaff;
+    border-radius: 8px;
+  }
+  
+  #pregunta-container button {
+    background-color: #ff66a3;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #pregunta-container button:hover {
+    background-color: #ff3385;
+  }
+  
+  .oculto {
+    display: none;
+  }
+  
+  #info {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #444;
+    background-color: #fff0f5;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #ccc;
+  }
+  

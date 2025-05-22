@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Desafío del Ajolote - Laberinto</title>
+  <link rel="stylesheet" href="desafioB1.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<!-- Banner -->
+<div class="banner">
+    <img src="imagess/tecnm.png" alt="Logo Izquierdo">
+    Aprende en línea con la escuelita de Male ¡Aprender es una aventura en la escuelita de Male!
+    <img src="imagess/itp.png" alt="Logo Derecho">
+</div>
+<body>
+  <audio id="musica-fondo" src="audio/audio3.mp3"autoplay loop></audio>
+  <main>
+    <div id="laberinto">
+      <div id="ajolote"></div>
+      <div id="meta">🎯</div>
+      <!-- Obstáculos" -->
+      <button class="volver-btn" onclick="cerrarJuego()">Volver</button>
+    </div>
+    <div id="pregunta-container" class="oculto">
+      <div id="pregunta-texto"></div>
+      <input type="text" id="respuesta" placeholder="Escribe tu respuesta">
+      <button onclick="verificarRespuesta()">Responder</button>
+    </div>
+  </main>
+
+  <footer>
+    Tecnológico Nacional de México - Campus Pachuca - Proyecto de asignatura - Programación Web - 2025
+</footer>
+
+
+  <script>
+    const ajolote = document.getElementById("ajolote");
+    const meta = document.getElementById("meta");
+    const laberinto = document.getElementById("laberinto");
+    const preguntaContainer = document.getElementById("pregunta-container");
+    const preguntaTexto = document.getElementById("pregunta-texto");
+    const respuestaInput = document.getElementById("respuesta");
+
+    let posX = 0;
+    let posY = 0;
+    let preguntaActiva = false;
+    let operacionCorrecta = 0;
+    let puntaje = 0;
+    let vidas = 3;
+    let obstaculoActual = null;
+
+    function crearObstaculosAleatorios(num) {
+      for (let i = 0; i < num; i++) {
+        const obs = document.createElement("div");
+        obs.classList.add("obstaculo");
+        obs.style.width = "30px";
+        obs.style.height = "30px";
+        obs.style.position = "absolute";
+        obs.style.background = "tomato";
+        obs.style.top = Math.floor(Math.random() * (laberinto.clientHeight - 30)) + "px";
+        obs.style.left = Math.floor(Math.random() * (laberinto.clientWidth - 30)) + "px";
+        laberinto.appendChild(obs);
+      }
+    }
+
+    crearObstaculosAleatorios(20);
+
+    function mostrarPregunta(obstaculo) {
+      const operadores = ["+", "-", "*", "/"];
+      const operador = operadores[Math.floor(Math.random() * operadores.length)];
+      let a = Math.floor(Math.random() * 10) + 1;
+      let b = Math.floor(Math.random() * 10) + 1;
+      if (operador === "/") a = a * b;
+
+      operacionCorrecta = eval(`${a} ${operador} ${b}`);
+      preguntaTexto.textContent = `¿Cuánto es ${a} ${operador} ${b}?`;
+      respuestaInput.value = "";
+      preguntaContainer.classList.remove("oculto");
+      preguntaActiva = true;
+      obstaculoActual = obstaculo;
+    }
+
+    function verificarRespuesta() {
+      const respuesta = parseFloat(respuestaInput.value);
+      if (respuesta === operacionCorrecta) {
+        puntaje++;
+        obstaculoActual.remove();
+        preguntaContainer.classList.add("oculto");
+        preguntaActiva = false;
+        obstaculoActual = null;
+      } else {
+        vidas--;
+        if (vidas === 0) {
+          alert("¡Oh no! Te quedaste sin vidas. Intenta de nuevo.");
+          location.reload();
+        } else {
+          alert(`¡Incorrecto! Te quedan ${vidas} vidas.`);
+        }
+      }
+    }
+
+    function mover(dx, dy) {
+      if (preguntaActiva) return;
+
+      const nuevoX = posX + dx;
+      const nuevoY = posY + dy;
+
+      if (nuevoX < 0 || nuevoX + 40 > laberinto.clientWidth || nuevoY < 0 || nuevoY + 40 > laberinto.clientHeight) return;
+
+      const obstaculos = document.querySelectorAll(".obstaculo");
+      for (let obstaculo of obstaculos) {
+        if (
+          nuevoX + ajolote.clientWidth > obstaculo.offsetLeft &&
+          nuevoX < obstaculo.offsetLeft + obstaculo.clientWidth &&
+          nuevoY + ajolote.clientHeight > obstaculo.offsetTop &&
+          nuevoY < obstaculo.offsetTop + obstaculo.clientHeight
+        ) {
+          mostrarPregunta(obstaculo);
+          return;
+        }
+      }
+
+      posX = nuevoX;
+      posY = nuevoY;
+      ajolote.style.left = posX + "px";
+      ajolote.style.top = posY + "px";
+
+      const aRect = ajolote.getBoundingClientRect();
+      const mRect = meta.getBoundingClientRect();
+      if (
+        aRect.right > mRect.left &&
+        aRect.left < mRect.right &&
+        aRect.bottom > mRect.top &&
+        aRect.top < mRect.bottom
+      ) {
+        setTimeout(() => {
+          alert(`¡Felicidades! Completaste el laberinto con ${puntaje} puntos.`);
+          location.reload();
+        }, 100);
+      }
+    }
+
+    window.addEventListener("keydown", function (e) {
+      switch (e.key) {
+        case "ArrowUp": mover(0, -10); break;
+        case "ArrowDown": mover(0, 10); break;
+        case "ArrowLeft": mover(-10, 0); break;
+        case "ArrowRight": mover(10, 0); break;
+      }
+    });
+
+    function cerrarJuego() {
+        window.location.href = "primaria.html"; // O redirige donde quieras
+    }
+
+    window.onload = generarProblema;
+  </script>
+</body>
+</html>
