@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Calificaciones</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --border-color: #e0e0e0;
+            --success-color: #2ecc71;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-weight: 600;
+            font-size: 28px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-1px);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        th {
+            background-color: var(--light-gray);
+            font-weight: 600;
+            color: #555;
+        }
+        
+        tr:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+        
+        .action-link {
+            display: inline-block;
+            padding: 5px 10px;
+            margin-right: 8px;
+            border-radius: 3px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .edit {
+            color: var(--warning-color);
+            border: 1px solid var(--warning-color);
+        }
+        
+        .edit:hover {
+            background-color: var(--warning-color);
+            color: white;
+        }
+        
+        .delete {
+            color: var(--danger-color);
+            border: 1px solid var(--danger-color);
+        }
+        
+        .delete:hover {
+            background-color: var(--danger-color);
+            color: white;
+        }
+        
+        .no-data {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+            font-style: italic;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .badge-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .badge-warning {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .badge-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .email-cell {
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Registro de Calificaciones</h1>
+            <a href="/agregar" class="btn">Agregar Alumno</a>
+        </div>
+        
+        {% if calificaciones %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Correo Electrónico</th>
+                    <th>Calif. 1</th>
+                    <th>Calif. 2</th>
+                    <th>Calif. 3</th>
+                    <th>Promedio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cal in calificaciones %}
+                <tr>
+                    <td>{{ cal.id }}</td>
+                    <td>{{ cal.nombre }}</td>
+                    <td class="email-cell">{{ cal.correo_electronico }}</td>
+                    <td>{{ "%.1f"|format(cal.calificacion1) }}</td>
+                    <td>{{ "%.1f"|format(cal.calificacion2) }}</td>
+                    <td>{{ "%.1f"|format(cal.calificacion3) }}</td>
+                    <td>
+                        <span class="badge 
+                            {% if cal.promedio >= 8 %}badge-success
+                            {% elif cal.promedio >= 6 %}badge-warning
+                            {% else %}badge-danger
+                            {% endif %}">
+                            {{ "%.1f"|format(cal.promedio) }}
+                        </span>
+                    </td>
+                    <td>
+                        <a href="/actualizar/{{ cal.id }}" class="action-link edit">Editar</a>
+                        <form action="/eliminar/{{ cal.id }}" method="POST" style="display: inline;">
+                            <button type="submit" class="action-link delete" onclick="return confirm('¿Eliminar este registro?')">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="no-data">
+            No hay registros de calificaciones. <a href="/agregar">Agregar un alumno</a>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
